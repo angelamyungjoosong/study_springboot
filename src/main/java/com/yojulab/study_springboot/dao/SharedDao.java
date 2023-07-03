@@ -30,6 +30,7 @@ public class SharedDao {
     }
 
     // 만들때
+    // datamap에는 key, value 싫어서 네개 보낸다. 
     public Object insert(String sqlMapId, Object dataMap) {
         Object result = sqlSessionTemplate.insert(sqlMapId, dataMap);
         return result;
