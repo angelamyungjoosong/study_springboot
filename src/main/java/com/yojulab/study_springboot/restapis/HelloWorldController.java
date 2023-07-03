@@ -91,5 +91,16 @@ public class HelloWorldController {
                 return ResponseEntity.ok().body(arrayList);
                 //json으로 상대에게 결과값을 보내줌
          }
+
+         // /helloWorldResponseFake/C00l
+           @GetMapping("/helloWorldResponseFake/{companyId}")
+         //받는 값을 object로 모든것의 최상위는 오브젝트. 원하는 걸 실어보내면 spring이 알아서 string으로 넣는다. 
+         public ResponseEntity<Object>  helloWorldResponseFake(@PathVariable String companyId){
+                // ioc사용해서 자동으로 인스턴스화 
+                ArrayList arrayList = new ArrayList<>();
+               helloWorldService.fakeSelect(companyId);
+                return ResponseEntity.ok().body(arrayList);
+                //json으로 상대에게 결과값을 보내줌
+         }
     }
 

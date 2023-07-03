@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="fake"> 
+<!--namespace가 클래스 이름  -->
+<!-- namespace와 id는 파일 내에서는 유니크해야함 / parameterType에 실어서 온다.여기에는 데이터 타입을 써주면 된다.where절에 들어가는것의데이터 타입/ mybatis의매서드에서 map으로 result를 받아-->
+	<!-- 변수의 이름이 여기로 들어온다  /메소드 이름있고 파라미터있고 리절트타입있었으니 이것도 메소드 
+    //class fake 
+    // Map selectByUID(String companyId, String..., ...){ }
+    // Map selectByUID(HashMap map){ }
+     아래 있는 것이 위의 메소드 형식으로 바뀌는 것이라 보면 된다
+    mybatis가 이 메소드를 호출하는 느낌
+    해쉬맵(map)파라미터이 들어오면 내부적으로 #{companyId}변수를 key로 찾아 -->
+    <select id="selectByUID" parameterType="Map" resultType="Map">
+    SELECT * 
+    FROM db_cars.factorys
+    WHERE COMPANY_ID = #{companyId}
+	</select>
+</mapper>
