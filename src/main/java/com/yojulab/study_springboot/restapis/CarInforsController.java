@@ -20,6 +20,17 @@ public class CarInforsController {
     @Autowired // 인스턴스화해놨으니 가져다 쓰겠다
     CarInforsService carInforsService;
 
+    //create
+    @GetMapping("/selectInUID") //이렇게안써도 insert라 인지
+    public ResponseEntity selectInUID(@RequestBody Map paramMap)//묶음으로 오니까 map으로 받아 (key,value형식으로)/rest방식은 안보이는 부분도 실어서 보냄. -> uri 노출 안되고 body부분에 실어서 보내줌. @RequestBody 해더 안의 내용 중에 body에서 가져옴(내용은 클라이언트가 준 거 안에 있다 ) 
+    {Object result = null;
+        try {
+      result = carInforsService.selectInUID(paramMap); 
+    } catch (Exception e) {
+       return ResponseEntity.badRequest().body(result);
+    }
+     return ResponseEntity.ok().body(result);}
+
     // /selectSearch/YEAR/2020
     // /selectSearch/CAR_NAME/소
     @GetMapping("/selectSearch/{search}/{words}") // 변수로 온다고 표시

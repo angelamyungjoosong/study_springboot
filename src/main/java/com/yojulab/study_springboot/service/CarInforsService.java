@@ -16,7 +16,17 @@ public class CarInforsService { // 리턴형식 모르면 object 붙이자.
     @Autowired // 자동으로 연결해줘 -- 클래스이름이 겹치면 별칭을 직접 줘야함. @Service(name="")
     SharedDao sharedDao; // getOne이라는 메소드를 호출하려고함(스프링 프레임워크는 이미 클래스 리스트를 가지고 인스턴스화 시켜준 상태이기 때문에 어떤걸 사용할지
                          // 선언만 하면 된다. 여러번 사용할 거니까 공통 사용이라는 di 선언. )
- 
+      
+     
+                         //haspmap의 상위부모가 map이어서 이거이용. 바이패스하려면 object하고 받아낼거면 map사용. 
+    // mybatis foreach Map("CAR_INFOR_ID_LIST",CAR_INFOR_ID_LIST 
+        public Object selectInUID(Map dataMap) {
+        String sqlMapId = "CarInfors.selectInUID"; 
+        
+        Object result = sharedDao.getList(sqlMapId, dataMap);
+         return result;
+    }
+
    //검색 (검색 조건: YEAR, CAR_NAME)
         public Object selectSearch(String search, String words) {
      
