@@ -18,11 +18,13 @@
      and YEAR > #{words}
      ]]>
     </when>
-    <otherwise>
+   
+   
+   <when test="search == 'CAR_NAME'">
       and CAR_NAME like CONCAT(#{words}, '%') 
-    </otherwise>
+    </when>
   </choose>
-        
+        ;
 	</select>
 
 <!-- mybatis foreach Map("CAR_INFOR_ID_LIST",CAR_INFOR_ID_LIST ) mybatis로 넘어오기 전에 이렇게 해쉬맵에 넣기 --> 

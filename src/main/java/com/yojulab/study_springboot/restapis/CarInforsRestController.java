@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.yojulab.study_springboot.service.CarInforsService;
 
 @RestController
-public class CarInforsController {
+public class CarInforsRestController {
     @Autowired // 인스턴스화해놨으니 가져다 쓰겠다
     CarInforsService carInforsService;
 
